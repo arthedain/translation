@@ -21,9 +21,5 @@
                 "Arthedain\\Translation\\ToolServiceProvider"
             ]
         }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "prefer-stable": true
+    }
 }
