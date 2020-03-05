@@ -1,5 +1,6 @@
 {
     "name": "arthedain/translation",
+    "type": "library",
     "description": "A Laravel Nova Translation tool.",
     "keywords": [
         "laravel",
