@@ -1,6 +1,7 @@
 {
     "name": "arthedain/translation",
     "type": "library",
+    "license": "MIT",
     "description": "A Laravel Nova Translation tool.",
     "keywords": [
         "laravel",
