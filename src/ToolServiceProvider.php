@@ -19,13 +19,13 @@ class ToolServiceProvider extends ServiceProvider
     {
 
         $this->publishes([
-            __DIR__.'/database/migrations/2020_03_04_110252_create_translations_table.php' => app_path('../database/migrations/2020_03_04_110252_create_translations_table.php'),
+            __DIR__.'/database/migrations/2020_03_04_110252_create_translations_table.php' => database_path('/migrations/2020_03_04_110252_create_translations_table.php'),
         ], 'migration');
         $this->publishes([
             __DIR__.'/Models/Translation.php' => app_path('/Models/Translation.php'),
         ], 'model');
         $this->publishes([
-            __DIR__.'/config/nova-translation.php' => app_path('../config/nova-translation.php'),
+            __DIR__.'/config/nova-translation.php' => config_path('nova-translation.php'),
         ], 'config');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'translation');

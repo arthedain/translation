@@ -8,7 +8,7 @@
 				class="bg-white pl-search w-1/2 form-global-search"
 				name="translation-search"
 				v-model="search"
-				placeholder="Press / to search"
+				:placeholder="__('Press / to search')"
 			/>
 		</div>
 
@@ -44,19 +44,19 @@
 							<label
 								class="inline-block text-80 pt-2 leading-tight w-1/2 mb-2"
 								:for="item.id"
-							>{{ item.key }}</label>
+							>{{ item[key] }}</label>
 							<input
 								v-if="item.value.length <= 60"
 								class="w-full form-control form-input form-input-bordered"
 								type="text"
 								:name="item.id"
-								:value="item.value"
+								:value="item[value]"
 							/>
 							<textarea
 								v-if="item.value.length > 60"
 								class="w-full form-control form-input form-input-bordered py-3 h-auto"
 								:name="item.id"
-								:value="item.value"
+								:value="item[value]"
 								rows="3"
 							></textarea>
 							<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -67,7 +67,7 @@
 							</svg>-->
 						</div>
 						<div class="flex items-end flex-row-reverse py-6 px-8">
-							<button type="submit" class="btn btn-default btn-primary ml-3">Update</button>
+							<button type="submit" class="btn btn-default btn-primary ml-3">{{ __('Update')}}</button>
 						</div>
 					<!-- </v-tab>
 				</vue-tabs> -->
@@ -88,12 +88,16 @@ export default {
 	data() {
 		return {
 			search: "",
-			data: []
+			data: [],
+			key: '',
+			value_field: '',
 		};
 	},
 	mounted() {
 		axios.get("/nova-vendor/translation/get").then(response => {
-			this.data = response.data;
+			this.data = response.data.data;
+			this.key = response.data.key;
+			this.value = response.data.value;
 			console.log(this.data);
 			
 			// console.log(response);
@@ -108,10 +112,10 @@ export default {
 			axios
 				.post("/nova-vendor/translation/update", formData)
 				.then(function() {
-					self.$toasted.show("Переводы успешно обновлены", { type: "success" });
+					self.$toasted.show(self.__("Переводы успешно обновлены"), { type: "success" });
 				})
 				.catch(function(error) {
-					self.$toasted.show("Ошибка", { type: "error" });
+					self.$toasted.show(self.__("Ошибка"), { type: "error" });
 				});
 		}
 	},
