@@ -12,4 +12,9 @@ class Translation extends Model
     protected $fillable = ['key', 'value'];
 
     protected $table = 'translations';
+
+    public static function getTranslation($key = null)
+    {
+        return self::locale($key);
+    }
 }
