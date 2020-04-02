@@ -28,7 +28,7 @@ The value of the `tab` parameter can be changed in the localization file
 ```h
 "All" => "Все"
 ```
-> ```tab``` optinal **boolean** parameter, sets to use a visual editor or not 
+> ```editor``` optinal **boolean** parameter, sets to use a visual editor or not 
 
 ##### Localization
 Go to ```/lang/vendor/nova/en.json``` 

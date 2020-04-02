@@ -44,6 +44,7 @@
 							class="w-full py-3 h-auto editor-field"
 							:name="item.id"
 							:value="item[value]"
+							
 							ref="editorvue"
 						></vue-editor>
 					</div>
@@ -57,7 +58,7 @@
 </template>
 
 <script>
-import { VueEditor, Quill } from "vue2-editor";
+import { VueEditor } from "vue2-editor";
 import Tabs from "vue-tabs-with-active-line";
 
 export default {
@@ -65,12 +66,13 @@ export default {
 		return {
 			search: "",
 			data: [],
-			key: "",
+			key: "key",
 			value_field: "",
-			value: "",
+			value: "value",
 			currentTab: 0,
 			defaultTabClass: 'py-5 px-8 border-b-2 focus:outline-none tab cursor-pointer text-grey font-semibold border-40',
 			selectedTabClass: 'py-5 px-8 border-b-2 focus:outline-none tab cursor-pointer text-grey-black font-bold border-primary',
+			customToolbar: [["bold", "italic", "underline"], [{ list: "ordered" }, { list: "bullet" }], ["image", "code-block"]]
 		};
 	},
 	components: {
@@ -80,8 +82,6 @@ export default {
 	mounted() {
 		axios.get("/nova-vendor/translation/get").then(response => {
 			this.data = response.data.data;
-			this.key = response.data.key;
-			this.value = response.data.value;
 		});
 
 	},
@@ -98,16 +98,16 @@ export default {
 			}
 
 			// self.__('Sorry, your session has expired.')
-			let self = this;
+			// let self = this;
 			axios
 				.post("/nova-vendor/translation/update", formData)
-				.then(function() {
-					self.$toasted.show(self.__("Переводы успешно обновлены"), {
+				.then(()=> {
+					this.$toasted.show(this.__("Переводы успешно обновлены"), {
 						type: "success"
 					});
 				})
-				.catch(function(error) {
-					self.$toasted.show(self.__("Ошибка"), { type: "error" });
+				.catch((error)=> {
+					this.$toasted.show(this.__("Ошибка"), { type: "error" });
 				});
 		},
 		handleClick(newTab) {

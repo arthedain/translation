@@ -13,14 +13,12 @@ class TranslationController extends Controller
 
     public function __construct()
     {
-        $this->model = config('nova-translation.model') ?? \App\Models\Translation::class;    
-        $this->key = config('nova-translation.key') ?? 'key';
-        $this->value = config('nova-translation.value') ?? 'value';
+        $this->model = config('nova-translation.model') ?? \App\Models\Translation::class;
     }
 
     public function get(){
         $data = $this->model::all()->toArray();
-        return response()->json(['data'=>$data, 'key' => $this->key, 'value' => $this->value]);
+        return response()->json(['data'=>$data]);
     }
 
     public function update(Request $request){

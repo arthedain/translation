@@ -13,22 +13,15 @@ trait HasTranslation
 
     public static function locale(string $name, array $custom_properties = ['tab' => 'All', 'editor' => false]): string
     {
-
-        $custom_properties = array_merge(self::$default_custom_properties, $custom_properties);
-        
-        $key = config('nova-translation.key') ?? 'key';
-
-        $value = config('nova-translation.value') ?? 'value';
-
         if (!self::$data) {
-            self::$data = self::all()->pluck($value, $key);
+            self::$data = self::all()->pluck('value', 'key');
         }
 
         if (!isset(self::$data[$name])) {
             self::create([
-                $key => $name,
-                $value => $name,
-                'custom_properties' => $custom_properties
+                'key' => $name,
+                'value' => $name,
+                'custom_properties' => array_merge(self::$default_custom_properties, $custom_properties)
             ]);
             self::$data[$name] = $name;
         }
