@@ -25,6 +25,7 @@ class TranslationController extends Controller
     }
 
     public function update(Request $request){
+        
         foreach(request()->all() as $key => $item){
             $this->model::where('id', $key)->where('value', '!=', $item)->update([
                 'value' => $item
