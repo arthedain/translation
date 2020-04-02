@@ -19,8 +19,7 @@ class TranslationController extends Controller
     }
 
     public function get(){
-        $data = $this->model::all();
-
+        $data = $this->model::all()->toArray();
         return response()->json(['data'=>$data, 'key' => $this->key, 'value' => $this->value]);
     }
 

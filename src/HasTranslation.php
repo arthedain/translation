@@ -6,12 +6,18 @@ trait HasTranslation
 {
 
     public static $data = false;
+    public static $default_custom_properties = [
+        'tab'       => 'All',
+        'editor'    => false,
+    ];
 
-    public static function locale($name)
+    public static function locale(string $name, array $custom_properties = ['tab' => 'All', 'editor' => false]): string
     {
+
+        $custom_properties = array_merge(self::$default_custom_properties, $custom_properties);
         
         $key = config('nova-translation.key') ?? 'key';
-    
+
         $value = config('nova-translation.value') ?? 'value';
 
         if (!self::$data) {
@@ -21,7 +27,8 @@ trait HasTranslation
         if (!isset(self::$data[$name])) {
             self::create([
                 $key => $name,
-                $value => $name
+                $value => $name,
+                'custom_properties' => $custom_properties
             ]);
             self::$data[$name] = $name;
         }

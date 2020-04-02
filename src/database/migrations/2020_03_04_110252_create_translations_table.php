@@ -17,6 +17,7 @@ class CreateTranslationsTable extends Migration
             $table->id();
             $table->text('key');
             $table->text('value');
+            $table->text('custom_properties');
             $table->timestamps();
         });
     }

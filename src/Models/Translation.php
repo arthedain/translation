@@ -9,12 +9,11 @@ class Translation extends Model
 {
     use HasTranslation;
 
-    protected $fillable = ['key', 'value'];
+    protected $fillable = ['key', 'value', 'custom_properties'];
 
     protected $table = 'translations';
 
-    public static function getTranslation($key = null)
-    {
-        return self::locale($key);
-    }
+    protected $casts = [
+        'custom_properties' => 'array'
+    ];
 }
