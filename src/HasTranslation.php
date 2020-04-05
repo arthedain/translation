@@ -9,9 +9,10 @@ trait HasTranslation
     public static $default_custom_properties = [
         'tab'       => 'All',
         'editor'    => false,
+        'key'       => false
     ];
 
-    public static function locale(string $name, array $custom_properties = ['tab' => 'All', 'editor' => false]): string
+    public static function locale(string $name, array $custom_properties = []): string
     {
         if (!self::$data) {
             self::$data = self::all()->pluck('value', 'key');

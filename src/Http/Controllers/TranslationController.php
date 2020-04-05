@@ -30,4 +30,9 @@ class TranslationController extends Controller
         }
         return \response('', 200);
     }
+
+    public function delete(Request $request){
+        $this->model::where('id', $request->element[0]['id'])->delete();
+        return \response('', 200);
+    }
 }

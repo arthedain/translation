@@ -36,4 +36,9 @@ Go to ```/lang/vendor/nova/en.json```
 "Translation" => "Translation",
 "Update" => "Update",
 "Translations updated successfully" => "Переводы успешно обновлены",
+"Show default value" => "Show default value",
+"Show delete button" => "Show delete button",
+"Saved successfully" => "Saved successfully",
+"Deleted successfully" => "Deleted successfully",
+"Error" => "Error",
 ```

@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/get', 'Arthedain\Translation\Http\Controllers\TranslationController@get');
 Route::post('/update', 'Arthedain\Translation\Http\Controllers\TranslationController@update');
+Route::post('/delete', 'Arthedain\Translation\Http\Controllers\TranslationController@delete');
