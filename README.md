@@ -20,7 +20,7 @@ php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider
 ## How to use
 
 ```h
-\App\Models\Translation::locale('some text to add in db', ['tab' => 'All', 'editor' => false]);
+\App\Models\Translation::locale('some text to add in db', ['tab' => 'All', 'editor' => false, 'key' => false]);
 ```
 > ```tab``` optinal **string** parameter, create group of fields. The default is ```All```
 
