@@ -1,8 +1,16 @@
 # Arthedain/Translation
-```h
+```
 composer require arthedain/translation
 ```
-
+Then include in NovaServiceProvider
+```
+public function tools()
+{
+    return [
+        new Translation,
+    ];
+}
+```
 
 #### Publish migrations
 ```
@@ -29,6 +37,29 @@ The value of the `tab` parameter can be changed in the localization file
 "All": "Все"
 ```
 > ```editor``` optinal **boolean** parameter, sets to use a visual editor or not 
+
+For calling method from trait in view use autoload, or other method
+```
+// composer.json
+
+"autoload": {
+    "files": [
+        //path to file
+    ],
+},
+
+// file
+<?
+
+function locale(string $name, array $parameters = []): string{
+    return \App\Models\Translation::locale($name, $parameters);
+}
+
+// view
+
+{{ locale('some text', ['tab' => 'Index']) }}
+
+```
 
 ##### Localization
 Go to ```/lang/vendor/nova/en.json``` 
