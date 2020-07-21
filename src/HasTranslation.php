@@ -5,28 +5,28 @@ namespace Arthedain\Translation;
 trait HasTranslation
 {
 
-    public $data = false;
-    public $default_custom_properties = [
+    public static $data = false;
+    public static $default_custom_properties = [
         'tab'       => 'All',
         'editor'    => false,
         'key'       => false
     ];
 
-    public function locale(string $name, array $custom_properties = []): string
+    public static function locale(string $name, array $custom_properties = []): string
     {
-        if (!$this->data) {
-            $this->data = $this->all()->pluck('value', 'key');
+        if (!self::$data) {
+            self::$data = self::all()->pluck('value', 'key');
         }
 
-        if (!isset($this->data[$name])) {
-            $this->create([
+        if (!isset(self::$data[$name])) {
+            self::create([
                 'key' => $name,
                 'value' => $name,
-                'custom_properties' => array_merge($this->default_custom_properties, $custom_properties)
+                'custom_properties' => array_merge(self::$default_custom_properties, $custom_properties)
             ]);
-            $this->data[$name] = $name;
+            self::$data[$name] = $name;
         }
 
-        return $this->data[$name];
+        return self::$data[$name];
     }
 }

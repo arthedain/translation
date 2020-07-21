@@ -5,16 +5,16 @@ composer require arthedain/translation
 
 
 #### Publish migrations
-```h
+```
 php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider" --tag="migration"
 ```
 >In migration you can change or add fields except ```custom_properties``` field
 #### Publish model
-```h
+```
 php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider" --tag="model"
 ```
 #### Publish config
-```h
+```
 php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider" --tag="config"
 ```
 ## How to use
@@ -26,19 +26,19 @@ php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider
 
 The value of the `tab` parameter can be changed in the localization file
 ```h
-"All" => "Все"
+"All": "Все"
 ```
 > ```editor``` optinal **boolean** parameter, sets to use a visual editor or not 
 
 ##### Localization
 Go to ```/lang/vendor/nova/en.json``` 
 ```h
-"Translation" => "Translation",
-"Update" => "Update",
-"Translations updated successfully" => "Переводы успешно обновлены",
-"Show default value" => "Show default value",
-"Show delete button" => "Show delete button",
-"Saved successfully" => "Saved successfully",
-"Deleted successfully" => "Deleted successfully",
-"Error" => "Error",
+"Translation": "Translation",
+"Update": "Update",
+"Translations updated successfully": "Переводы успешно обновлены",
+"Show default value": "Show default value",
+"Show delete button": "Show delete button",
+"Saved successfully": "Saved successfully",
+"Deleted successfully": "Deleted successfully",
+"Error": "Error",
 ```

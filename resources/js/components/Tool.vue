@@ -2,14 +2,24 @@
 	<div>
 		<!-- <heading class="mb-6">Translation</heading> -->
 
-		<div class="flex py-6 px-8">
-			<input
-				type="text"
-				class="bg-white pl-search w-1/2 form-global-search"
-				name="translation-search"
-				v-model="search"
-				:placeholder="__('Press / to search')"
-			/>
+
+
+		<div class="flex mb-6">
+			
+			<div class="relative w-1/2">
+				<div class="relative">
+					<div class="relative">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" aria-labelledby="search" role="presentation" class="fill-current absolute search-icon-center ml-3 text-80"><path fill-rule="nonzero" d="M14.32 12.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387a8 8 0 1 1 1.414-1.414zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg> 
+						<input 
+							type="text" 
+							name="translation-search" 
+							class="pl-search w-full form-global-search"
+							v-model="search"
+							:placeholder="__('Press / to search')"
+							/>
+					</div> 
+				</div>
+			</div>
 			<div class="inline-block pl-3 w-1/4">
 				<label
 					for="labelVisibleCheckbox"
@@ -17,7 +27,7 @@
 				>{{ __("Show default value") }}</label>
 				<input type="checkbox" id="labelVisibleCheckbox" class="checkbox" @click="changeLabelVisible" />
 			</div>
-			<div class="inline-block pl-3 w-1/4">
+			<div class="inline-block w-1/4">
 				<label
 					for="deleteCheckbox"
 					class="inline-block text-80 pt-2 leading-tight"
@@ -41,7 +51,7 @@
 					:key="k"
 					:class="[ currentTab == index ? '' :'tab-body']"
 				>
-					<div class="flex py-6 px-8 items-center mb-3" v-for="(item, id) in singleGroup" :key="id">
+					<div class="flex py-6 px-8 items-center mb-3 border-b border-40" v-for="(item, id) in singleGroup" :key="id">
 						<label
 							v-if="showLabel"
 							class="inline-block text-80 pt-2 leading-tight w-1/2 mb-2"
@@ -69,7 +79,9 @@
 							:editor-toolbar="customToolbar"
 							ref="editorvue"
 						></vue-editor>
-						<div v-if="showDelete" @click="remove(id);" class="buttonDelete"></div>
+						<div v-if="showDelete" @click="remove(id);" class="buttonDelete">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="red" class="heroicon-ui" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"/></svg>
+						</div>
 					</div>
 				</div>
 				<div class="flex items-end flex-row-reverse py-6 px-8">
@@ -252,11 +264,14 @@ export default {
 .buttonDelete {
 	margin-left: 5px;
 	cursor: pointer;
-	height: 40px;
-	width: 40px;
-	background-color: #e74444;
-	mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAy%0D%0ANCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBjbGFzcz0iaGVyb2ljb24tdWkiIGQ9Ik00%0D%0ALjkzIDE5LjA3QTEwIDEwIDAgMSAxIDE5LjA3IDQuOTMgMTAgMTAgMCAwIDEgNC45MyAxOS4wN3pt%0D%0AMS40MS0xLjQxQTggOCAwIDEgMCAxNy42NiA2LjM0IDggOCAwIDAgMCA2LjM0IDE3LjY2ek0xMy40%0D%0AMSAxMmwxLjQyIDEuNDFhMSAxIDAgMSAxLTEuNDIgMS40MkwxMiAxMy40bC0xLjQxIDEuNDJhMSAx%0D%0AIDAgMSAxLTEuNDItMS40MkwxMC42IDEybC0xLjQyLTEuNDFhMSAxIDAgMSAxIDEuNDItMS40Mkwx%0D%0AMiAxMC42bDEuNDEtMS40MmExIDEgMCAxIDEgMS40MiAxLjQyTDEzLjQgMTJ6Ii8+PC9zdmc+");
-	mask-repeat: no-repeat;
-	mask-size: 100% 100%;
+	/* height: 40px; */
+	/* width: 40px; */
+	/* background-color: #e74444; */
+	/* mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAy%0D%0ANCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBjbGFzcz0iaGVyb2ljb24tdWkiIGQ9Ik00%0D%0ALjkzIDE5LjA3QTEwIDEwIDAgMSAxIDE5LjA3IDQuOTMgMTAgMTAgMCAwIDEgNC45MyAxOS4wN3pt%0D%0AMS40MS0xLjQxQTggOCAwIDEgMCAxNy42NiA2LjM0IDggOCAwIDAgMCA2LjM0IDE3LjY2ek0xMy40%0D%0AMSAxMmwxLjQyIDEuNDFhMSAxIDAgMSAxLTEuNDIgMS40MkwxMiAxMy40bC0xLjQxIDEuNDJhMSAx%0D%0AIDAgMSAxLTEuNDItMS40MkwxMC42IDEybC0xLjQyLTEuNDFhMSAxIDAgMSAxIDEuNDItMS40Mkwx%0D%0AMiAxMC42bDEuNDEtMS40MmExIDEgMCAxIDEgMS40MiAxLjQyTDEzLjQgMTJ6Ii8+PC9zdmc+"); */
+	/* mask-repeat: no-repeat; */
+	/* mask-size: 100% 100%; */
+}
+form{
+	min-height: 300px;
 }
 </style>
