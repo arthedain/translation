@@ -2,10 +2,10 @@
 
 namespace Arthedain\Translation;
 
+use Laravel\Nova\Nova;
+use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Nova\Events\ServingNova;
-use Laravel\Nova\Nova;
 use Arthedain\Translation\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
@@ -17,7 +17,6 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->publishes([
             __DIR__.'/database/migrations/2020_03_04_110252_create_translations_table.php' => database_path('/migrations/2020_03_04_110252_create_translations_table.php'),
         ], 'migration');

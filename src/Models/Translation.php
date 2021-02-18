@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Arthedain\Translation\HasTranslation;
 use Illuminate\Database\Eloquent\Model;
+use Arthedain\Translation\HasTranslation;
 
 class Translation extends Model
 {
@@ -14,6 +14,6 @@ class Translation extends Model
     protected $table = 'translations';
 
     protected $casts = [
-        'custom_properties' => 'array'
+        'custom_properties' => 'array',
     ];
 }

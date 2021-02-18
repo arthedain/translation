@@ -2,7 +2,6 @@
 
 namespace Arthedain\Translation;
 
-use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 

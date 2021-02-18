@@ -1,3 +1,5 @@
+import translation from "./store/translation";
+
 Nova.booting((Vue, router, store) => {
 	Vue.filter('striphtml', function (value) {
 	  return value.replace(/(<([^>]+)>)/ig,"");
@@ -9,4 +11,5 @@ Nova.booting((Vue, router, store) => {
       component: require('./components/Tool'),
     },
   ])
+    store.registerModule('/translation', translation);
 })

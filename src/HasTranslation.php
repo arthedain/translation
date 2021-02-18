@@ -1,15 +1,15 @@
-<?
+<?php
 
 namespace Arthedain\Translation;
 
 trait HasTranslation
 {
-
     public static $data = false;
+
     public static $default_custom_properties = [
-        'tab'       => 'All',
-        'editor'    => false,
-        'key'       => false
+        'tab' => 'All',
+        'editor' => false,
+        'key' => false,
     ];
 
     public static function locale(string $name, array $custom_properties = []): string
@@ -22,7 +22,7 @@ trait HasTranslation
             self::create([
                 'key' => $name,
                 'value' => $name,
-                'custom_properties' => array_merge(self::$default_custom_properties, $custom_properties)
+                'custom_properties' => array_merge(self::$default_custom_properties, $custom_properties),
             ]);
             self::$data[$name] = $name;
         }
