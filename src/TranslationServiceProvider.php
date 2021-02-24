@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Arthedain\Translation\Http\Middleware\Authorize;
 
-class ToolServiceProvider extends ServiceProvider
+class TranslationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -34,7 +34,8 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         Nova::serving(function (ServingNova $event) {
-            //
+            Nova::script('translation-field', __DIR__.'/../dist/js/field.js');
+            Nova::style('translation-field', __DIR__.'/../dist/css/field.css');
         });
     }
 
