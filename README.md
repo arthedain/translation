@@ -12,19 +12,23 @@ public function tools()
 }
 ```
 
-#### Publish migrations
+##### Publish migrations
 ```
 php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" --tag="migration"
 ```
 >In migration you can change or add fields except ```custom_properties``` field
-#### Publish model
+##### Publish model
 ```
 php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" --tag="model"
 ```
-#### Publish config
+##### Publish config
 ```
-php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" " --tag="config"
+php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" --tag="config"
 ```
+##### Publish editor skin
+````
+php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" --tag="tinymce"
+````
 ## How to use
 
 ```h
@@ -60,6 +64,18 @@ function locale(string $name, array $parameters = []): string{
 {{ locale('some text', ['tab' => 'Index']) }}
 
 ```
+### Resource field
+In resource call
+```
+use Arthedain\Translation\TranslationField;
+
+//
+
+TranslationField::make('Translations')->tabName('Index'),
+```
+
+
+
 
 ##### Localization
 Go to ```/lang/vendor/nova/en.json``` 
