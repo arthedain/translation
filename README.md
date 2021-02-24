@@ -14,16 +14,16 @@ public function tools()
 
 #### Publish migrations
 ```
-php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider" --tag="migration"
+php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" --tag="migration"
 ```
 >In migration you can change or add fields except ```custom_properties``` field
 #### Publish model
 ```
-php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider" --tag="model"
+php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" --tag="model"
 ```
 #### Publish config
 ```
-php artisan vendor:publish --provider="Arthedain\Translation\ToolServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Arthedain\Translation\TranslationServiceProvider" " --tag="config"
 ```
 ## How to use
 
