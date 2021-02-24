@@ -42,4 +42,13 @@ class TranslationController extends Controller
 
         return \response('', 200);
     }
+
+    public function getByTab(Request $request)
+    {
+        $data = $this->model::where('custom_properties->tab', $request->tab)->get();
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
 }

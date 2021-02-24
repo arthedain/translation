@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Arthedain\Translation\Http\Middleware\Authorize;
 
-class ToolServiceProvider extends ServiceProvider
+class TranslationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -17,6 +17,10 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/../dist/tinymce' => public_path('vendor/tinymce'),
+        ], 'tinymce');
+
         $this->publishes([
             __DIR__.'/database/migrations/2020_03_04_110252_create_translations_table.php' => database_path('/migrations/2020_03_04_110252_create_translations_table.php'),
         ], 'migration');
@@ -34,7 +38,9 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         Nova::serving(function (ServingNova $event) {
-            //
+            Nova::script('translation-field-tinymce', __DIR__.'/../dist/js/tinymce.js');
+            Nova::script('translation-field', __DIR__.'/../dist/js/field.js');
+            Nova::style('translation-field', __DIR__.'/../dist/css/field.css');
         });
     }
 
